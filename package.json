@@ -1,0 +1,14 @@
+{
+  "name": "com.yoshd.unitywebsocket",
+  "displayName": "UnityWebSocket",
+  "version": "0.1.0",
+  "unity": "2021.3",
+  "description": "WebSocket client for Unity that also works with WebGL.",
+  "keywords": [
+    "WebSocket",
+    "WebGL"
+  ],
+  "license": "MIT",
+  "category": "Networking",
+  "type": "library"
+}
