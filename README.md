@@ -1,6 +1,6 @@
 # UnityWebSocket
 
-UnityWebSocket is a client library that allows transparent use of WebSockets on both WebGL and other platforms.
+UnityWebSocket is a client library that allows transparent use of WebSocket on both WebGL and other platforms.
 
 Unity WebGL has the limitation that the browser cannot handle the socket API directly, so WebSocket must be used from Javascript via Emscripten. (See [Documentation](https://docs.unity3d.com/2021.3/Documentation/Manual/webgl-networking.html))
 
