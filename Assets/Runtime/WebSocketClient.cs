@@ -23,13 +23,25 @@ namespace UnityWebSocket
             await _client.ConnectAsync(uri, cancellationToken);
         }
 
-        public async UniTask SendAsync(Memory<byte> buffer, WebSocketMessageType messageType, bool endOfMessage,
+        public async UniTask SendAsync(ReadOnlyMemory<byte> buffer, WebSocketMessageType messageType, bool endOfMessage,
+            CancellationToken cancellationToken)
+        {
+            await _client.SendAsync(buffer, messageType, endOfMessage, cancellationToken);
+        }
+
+        public async UniTask SendAsync(ArraySegment<byte> buffer, WebSocketMessageType messageType, bool endOfMessage,
             CancellationToken cancellationToken)
         {
             await _client.SendAsync(buffer, messageType, endOfMessage, cancellationToken);
         }
 
         public async UniTask<ValueWebSocketReceiveResult> ReceiveAsync(Memory<byte> buffer,
+            CancellationToken cancellationToken)
+        {
+            return await _client.ReceiveAsync(buffer, cancellationToken);
+        }
+
+        public async UniTask<WebSocketReceiveResult> ReceiveAsync(ArraySegment<byte> buffer,
             CancellationToken cancellationToken)
         {
             return await _client.ReceiveAsync(buffer, cancellationToken);
