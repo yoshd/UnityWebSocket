@@ -40,11 +40,11 @@ var WebSocketLibrary = {
                 }
             } else {
                 // Text
-                var length = lengthBytesUTF8(e.data.length + 1);
+                var length = lengthBytesUTF8(e.data) + 1;
                 var buffer = _malloc(length);
                 stringToUTF8(e.data, buffer, length)
                 try {
-                    dynCall('viiii', instance.onMessage, [instance.id, 0, buffer, e.data.length]);
+                    dynCall('viiii', instance.onMessage, [instance.id, 0, buffer, length]);
                 } finally {
                     _free(buffer);
                 }
