@@ -7,7 +7,7 @@ namespace UnityWebSocket
 {
     public class WebSocketClient : IDisposable
     {
-        private IWebSocketClient _client;
+        private readonly IWebSocketClient _client;
 
         public WebSocketClient()
         {
@@ -23,16 +23,15 @@ namespace UnityWebSocket
             await _client.ConnectAsync(uri, cancellationToken);
         }
 
-        public async UniTask SendAsync(ReadOnlyMemory<byte> buffer, WebSocketMessageType messageType, bool endOfMessage,
-            CancellationToken cancellationToken)
+        public async UniTask SendAsync(ReadOnlyMemory<byte> buffer, CancellationToken cancellationToken)
         {
-            await _client.SendAsync(buffer, messageType, endOfMessage, cancellationToken);
+            await _client.SendAsync(buffer, cancellationToken);
         }
 
         public async UniTask SendAsync(ArraySegment<byte> buffer, WebSocketMessageType messageType, bool endOfMessage,
             CancellationToken cancellationToken)
         {
-            await _client.SendAsync(buffer, messageType, endOfMessage, cancellationToken);
+            await _client.SendAsync(buffer, cancellationToken);
         }
 
         public async UniTask<ValueWebSocketReceiveResult> ReceiveAsync(Memory<byte> buffer,
