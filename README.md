@@ -13,6 +13,8 @@ Unity WebGL has the limitation that the browser cannot handle the socket API dir
 
 You can add `"com.yoshd.unitywebsocket": "https://github.com/yoshd/UnityWebSocket.git"` to your `manifest.json` .
 
+Messages are always sent in binary type.
+
 ```cs
 using UnityWebSocket;
 
@@ -20,7 +22,7 @@ async UniTask SampleAsync()
 {
     var client = new WebSocketClient();
     var msg = System.Text.Encoding.UTF8.GetBytes("Hello!");
-    await client.SendAsync(msg.AsMemory(), WebSocketMessageType.Binary, true, CancellationToken.None);
+    await client.SendAsync(msg.AsMemory(), CancellationToken.None);
     var buf = new Memory<byte>(new byte[1024]);
     var r = await client.ReceiveAsync(buf, CancellationToken.None);
     await client.CloseAsync(WebSocketCloseStatus.NormalClosure, "close", CancellationToken.None);

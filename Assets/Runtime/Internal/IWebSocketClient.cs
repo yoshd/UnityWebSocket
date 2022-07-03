@@ -9,11 +9,9 @@ namespace UnityWebSocket
     {
         UniTask ConnectAsync(Uri uri, CancellationToken cancellationToken);
 
-        UniTask SendAsync(ReadOnlyMemory<byte> buffer, WebSocketMessageType messageType, bool endOfMessage,
-            CancellationToken cancellationToken);
+        UniTask SendAsync(ReadOnlyMemory<byte> buffer, CancellationToken cancellationToken);
 
-        UniTask SendAsync(ArraySegment<byte> buffer, WebSocketMessageType messageType, bool endOfMessage,
-            CancellationToken cancellationToken);
+        UniTask SendAsync(ArraySegment<byte> buffer, CancellationToken cancellationToken);
 
         UniTask<ValueWebSocketReceiveResult> ReceiveAsync(Memory<byte> buffer, CancellationToken cancellationToken);
 

@@ -43,8 +43,7 @@ namespace UnityWebSocket
             } while (State is WebSocketState.Connecting);
         }
 
-        public UniTask SendAsync(ReadOnlyMemory<byte> buffer, WebSocketMessageType messageType, bool endOfMessage,
-            CancellationToken cancellationToken)
+        public UniTask SendAsync(ReadOnlyMemory<byte> buffer, CancellationToken cancellationToken)
         {
             unsafe
             {
@@ -57,10 +56,9 @@ namespace UnityWebSocket
             return UniTask.CompletedTask;
         }
 
-        public UniTask SendAsync(ArraySegment<byte> buffer, WebSocketMessageType messageType, bool endOfMessage,
-            CancellationToken cancellationToken)
+        public UniTask SendAsync(ArraySegment<byte> buffer, CancellationToken cancellationToken)
         {
-            return SendAsync(buffer.AsMemory(), messageType, endOfMessage, cancellationToken);
+            return SendAsync(buffer.AsMemory(), cancellationToken);
         }
 
         public async UniTask<ValueWebSocketReceiveResult> ReceiveAsync(Memory<byte> buffer,
