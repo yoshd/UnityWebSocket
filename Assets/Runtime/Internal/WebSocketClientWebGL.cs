@@ -179,9 +179,12 @@ namespace UnityWebSocket
         private static void OnCloseFunc(int instanceId, int code)
         {
             // FYI: https://developer.mozilla.org/ja/docs/Web/API/CloseEvent/code
-            if (!_instances[instanceId]._disposed)
+            if (_instances.TryGetValue(instanceId, out var instance))
             {
-                _instances[instanceId].State = code == 1000 ? WebSocketState.Closed : WebSocketState.Aborted;
+                if (!instance._disposed)
+                {
+                    instance.State = code == 1000 ? WebSocketState.Closed : WebSocketState.Aborted;
+                }
             }
         }
 
