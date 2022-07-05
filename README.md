@@ -21,6 +21,7 @@ using UnityWebSocket;
 async UniTask SampleAsync()
 {
     var client = new WebSocketClient();
+    client.ConnectAsync(new Uri("ws://localhost:8080/hello"), CancellationToken.None);
     var msg = System.Text.Encoding.UTF8.GetBytes("Hello!");
     await client.SendAsync(msg.AsMemory(), CancellationToken.None);
     var buf = new Memory<byte>(new byte[1024]);
