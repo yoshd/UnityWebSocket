@@ -11,7 +11,7 @@ Unity WebGL has the limitation that the browser cannot handle the socket API dir
 
 ## Usage
 
-You can add `"com.yoshd.unitywebsocket": "https://github.com/yoshd/UnityWebSocket.git#v0.1.3"` to your `manifest.json` .
+You can add `"com.yoshd.unitywebsocket": "https://github.com/yoshd/UnityWebSocket.git#v0.1.4"` to your `manifest.json` .
 
 Messages are always sent in binary type.
 
